@@ -1,0 +1,206 @@
+# =========================================================
+# .NET / ASP.NET Core
+# =========================================================
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+build/
+bld/
+
+# Architecture / platform specific build outputs
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# MSBuild
+*.binlog
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# =========================================================
+# Test results / coverage
+# =========================================================
+
+[Tt]est[Rr]esult*/
+TestResults/
+
+*.trx
+*.coverage
+*.coveragexml
+*.opencover.xml
+
+coverage/
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# BenchmarkDotNet
+BenchmarkDotNet.Artifacts/
+
+# =========================================================
+# Visual Studio
+# =========================================================
+
+.vs/
+
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+
+# Visual Studio temporary files
+*.aps
+*.ncb
+*.opendb
+
+# =========================================================
+# Visual Studio Code
+# =========================================================
+
+.vscode/
+
+# =========================================================
+# JetBrains Rider / ReSharper
+# =========================================================
+
+.idea/
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# =========================================================
+# NuGet
+# =========================================================
+
+*.nupkg
+*.snupkg
+
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+.nuget/
+
+# NuGet restore generated files
+project.assets.json
+project.nuget.cache
+*.nuget.g.props
+*.nuget.g.targets
+
+# =========================================================
+# ASP.NET Core publish output
+# =========================================================
+
+publish/
+[Pp]ublish/
+
+# =========================================================
+# Logs / temporary files
+# =========================================================
+
+logs/
+[Ll]ogs/
+
+*.log
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*.swp
+
+tmp/
+temp/
+
+# =========================================================
+# Local configuration / secrets
+# =========================================================
+
+# Local-only application configuration
+appsettings.*.local.json
+appsettings.Local.json
+
+# Secrets / certificates
+secrets.json
+*.pfx
+*.p12
+*.key
+*.pem
+
+# Environment variable files
+.env
+.env.*
+!.env.example
+
+# =========================================================
+# Local databases
+# =========================================================
+
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# =========================================================
+# Generated documentation / tooling output
+# =========================================================
+
+docs/_site/
+site/
+
+# =========================================================
+# Operating system files
+# =========================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# Linux / editors
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# =========================================================
+# Code analysis / profiling
+# =========================================================
+
+.sonar/
+.scannerwork/
+
+*.diagsession
+*.vsp
+*.vspx
+*.sap
+
+# =========================================================
+# Crash dumps
+# =========================================================
+
+*.dmp
+*.mdmp
+
+# =========================================================
+# Others
+# =========================================================
+
+media/*
+!media/SantanderDemo.gif

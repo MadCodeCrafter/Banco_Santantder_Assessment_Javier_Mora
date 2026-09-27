@@ -138,19 +138,19 @@ Pasos para `GET /api/best-stories?n=10`:
 6. Tomar `n` y mapear al DTO público.
 7. Devolver JSON.
 
-### Cómo se determinan las "n mejores" historias
+### Cómo se determinan las "mejores n" historias
 
-`/beststories.json` devuelve los ids de las historias que Hacker News considera relevantes, pero
-esa lista **no** representa una clasificación estricta por `score` (combina puntuación, antigüedad
-y otros factores). Sin embargo, el ejercicio requiere devolver las `n` historias con mayor
-`score`. Por este motivo, **no** se confía en el orden de los ids: se recuperan los detalles de
-**todos** los candidatos y, posteriormente, se aplica:
+`/beststories.json` devuelve los IDs de las historias que Hacker News considera
+relevantes, pero ese listado **no** es un ranking estricto por `score` (mezcla score,
+antigüedad y otros factores). El enunciado, en cambio, exige devolver las `n` historias
+con mayor `score`. Por eso **no** confiamos en el orden de los IDs: recuperamos el
+detalle de **todos** los candidatos y solo entonces aplicamos:
 
 ```csharp
-OrderByDescending(story => story.Score).Take(n))
+OrderByDescending(story => story.Score).Take(n)
 ```
 
-Ejemplo sencillo. Supongamos que Hacker News devuelve los siguientes ids candidatos:
+Ejemplo sencillo. Supongamos que Hacker News devuelve los siguientes IDs candidatos:
 
 ```
 A -> score 300
@@ -160,25 +160,26 @@ D -> score 900
 E -> score 800
 ```
 
-For `n = 3`, fetching only A, B and C would incorrectly return:
+Para `n = 3`, consultar solo A, B y C devolvería incorrectamente:
 
 ```
 300, 250, 200
 ```
 
-The correct result by score is:
+El resultado correcto por score es:
 
 ```
 900, 800, 300
 ```
 
-**Trade-off.** With a cold cache, the first request may need to fetch many items
-(up to 500) instead of just `n`. This prioritises functional correctness. The cost is
-kept under control through **global bounded concurrency**
-(`HackerNews:MaxConcurrency`), **item-level caching** and **cache stampede protection**,
-so subsequent requests are served almost entirely from cache. In a large-scale
-production system, additional options such as background refresh, a distributed cache or
-periodic preloading could be considered, but they are not required for this exercise.
+**Trade-off.** Con la caché fría, la primera petición puede necesitar recuperar muchos
+ítems (hasta 500) en lugar de solo `n`. Esto prioriza la exactitud funcional. El coste
+se mantiene bajo control mediante **concurrencia global acotada**
+(`HackerNews:MaxConcurrency`), **caché por ítem** y **protección anti cache stampede**,
+de modo que las peticiones siguientes se sirven casi por completo desde la caché. En un
+sistema de producción a gran escala podrían considerarse opciones adicionales como
+refresco en segundo plano, una caché distribuida o precarga periódica, aunque no son
+necesarias para este ejercicio.
 
 ---
 

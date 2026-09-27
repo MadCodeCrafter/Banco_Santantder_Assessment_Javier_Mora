@@ -13,12 +13,12 @@
   ],
   "item": [
     {
-      "name": "Obtener 5 mejores historias",
+      "name": "n=1 (válido)",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/api/best-stories?n=5",
+          "raw": "{{baseUrl}}/api/best-stories?n=1",
           "host": [
             "{{baseUrl}}"
           ],
@@ -29,11 +29,131 @@
           "query": [
             {
               "key": "n",
-              "value": "5"
+              "value": "1"
             }
           ]
         },
-        "description": "Devuelve las 5 mejores historias de Hacker News ordenadas por puntuación de forma descendente."
+        "description": "Devuelve la mejor historia (200 OK)."
+      }
+    },
+    {
+      "name": "n=10 (válido)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/best-stories?n=10",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "best-stories"
+          ],
+          "query": [
+            {
+              "key": "n",
+              "value": "10"
+            }
+          ]
+        },
+        "description": "Devuelve las 10 mejores historias ordenadas por puntuación descendente (200 OK)."
+      }
+    },
+    {
+      "name": "n=20 (válido, repetir para observar caché)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/best-stories?n=20",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "best-stories"
+          ],
+          "query": [
+            {
+              "key": "n",
+              "value": "20"
+            }
+          ]
+        },
+        "description": "Devuelve las 20 mejores historias (200 OK). Repite la petición para observar el efecto de la caché."
+      }
+    },
+    {
+      "name": "n=0 (inválido)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/best-stories?n=0",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "best-stories"
+          ],
+          "query": [
+            {
+              "key": "n",
+              "value": "0"
+            }
+          ]
+        },
+        "description": "n debe ser mayor que cero (400 Bad Request)."
+      }
+    },
+    {
+      "name": "n=-1 (inválido)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/best-stories?n=-1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "best-stories"
+          ],
+          "query": [
+            {
+              "key": "n",
+              "value": "-1"
+            }
+          ]
+        },
+        "description": "n negativo no permitido (400 Bad Request)."
+      }
+    },
+    {
+      "name": "n=101 (supera el máximo)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/best-stories?n=101",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "best-stories"
+          ],
+          "query": [
+            {
+              "key": "n",
+              "value": "101"
+            }
+          ]
+        },
+        "description": "n supera el máximo configurado (BestStories:MaxCount = 100) y se rechaza (400 Bad Request)."
       }
     }
   ]

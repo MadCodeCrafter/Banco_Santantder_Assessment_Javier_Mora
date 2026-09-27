@@ -138,19 +138,19 @@ Pasos para `GET /api/best-stories?n=10`:
 6. Tomar `n` y mapear al DTO público.
 7. Devolver JSON.
 
-### How the "best n" stories are determined
+### Cómo se determinan las "n mejores" historias
 
-`/beststories.json` returns the IDs of the stories Hacker News considers relevant, but
-that list is **not** a strict ranking by `score` (it blends score, age and other
-factors). The assessment, however, requires returning the `n` stories with the highest
-`score`. We therefore do **not** trust the order of the IDs: we fetch the details of
-**all** candidates and only then apply:
+`/beststories.json` devuelve los ids de las historias que Hacker News considera relevantes, pero
+esa lista **no** representa una clasificación estricta por `score` (combina puntuación, antigüedad
+y otros factores). Sin embargo, el ejercicio requiere devolver las `n` historias con mayor
+`score`. Por este motivo, **no** se confía en el orden de los ids: se recuperan los detalles de
+**todos** los candidatos y, posteriormente, se aplica:
 
 ```csharp
-OrderByDescending(story => story.Score).Take(n)
+OrderByDescending(story => story.Score).Take(n))
 ```
 
-Simple example. Suppose Hacker News returns the following candidate IDs:
+Ejemplo sencillo. Supongamos que Hacker News devuelve los siguientes ids candidatos:
 
 ```
 A -> score 300
